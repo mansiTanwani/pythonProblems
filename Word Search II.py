@@ -37,6 +37,9 @@ class Solution:
                         if board[i][j]==word[0]:
                             if word[0] not in result:
                                 result.append(word[0])
+                                if len(result)==len(word): 
+                                    str1 = ''.join(result)
+                                    final_output.append(str1)
                             letter = letter+1
                             look_adj(i,j,letter)
 
