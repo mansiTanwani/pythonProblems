@@ -7,7 +7,7 @@ class Solution:
         """
         len_s=len(s)
         len_p=len(p)
-        result=False
+        result="NA"
         if p=='*':
             result=True
         elif len_p>len_s:
@@ -20,17 +20,20 @@ class Solution:
                 counter=0
                 sub_list = subs.split("?")
                 for subchars in sub_list:
-                    if counter==0 and start >0:
+
+                    if ((counter==0 and start >0) | (subchars=='' and start==0)):
                         index = s.find(subchars, start)
                     else:
                         index = s.find(subchars, start, start+len(subchars))
                     counter=counter+1
 
                     if index==-1:
+
                         result=False
                         break
                     else:
-                        start = index + len(subchars)+1
+                        if subchars!='':
+                            start = index + len(subchars)+1
                 if result==False:
                     break
 
@@ -40,4 +43,4 @@ class Solution:
                 result=True
             else:
                 result=False
-                return result
+        return result
